@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite
+*.db
+
+# Environments
+.env
+.venv/
+.conda/
+env/
+venv/
+
+# Streamlit
+.streamlit/
+
+# VSCode
+.vscode/
