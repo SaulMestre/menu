@@ -1,5 +1,5 @@
 services:
-  # -------- API (FastAPI + SQLite en disco persistente) ----------
+  # -------- API (FastAPI + Postgres a Neon) ----------
   - type: web
     name: menu-api
     env: python
@@ -9,14 +9,8 @@ services:
     autoDeploy: true
     healthCheckPath: /ping
     envVars:
-      - key: DB_PATH
-        value: /var/data/meals.db
-      - key: ALLOWED_ORIGINS         # al principio deja '*' y luego pon la URL del front
+      - key: ALLOWED_ORIGINS         # al principi pot ser "*"; després posa la URL del front
         value: "*"
-    disk:
-      name: data
-      mountPath: /var/data
-      sizeGB: 1
 
   # -------- FRONT (Streamlit) ----------
   - type: web
@@ -27,9 +21,8 @@ services:
     startCommand: streamlit run front/app.py --server.port $PORT --server.address 0.0.0.0
     autoDeploy: true
     envVars:
-      # API_URL se rellenará automáticamente con la URL pública del servicio menu-api
       - key: API_URL
         fromService:
           name: menu-api
           type: web
-          property: url
+          property: connectionString   # URL completa https://...
