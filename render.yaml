@@ -25,4 +25,4 @@ services:
         fromService:
           name: menu-api
           type: web
-          property: host   # <- canvia connectionString per host
+          property: url   # <- canvia connectionString per host
