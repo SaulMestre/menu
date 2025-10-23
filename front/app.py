@@ -8,7 +8,8 @@ st.set_page_config(page_title="Menú semanal", page_icon="🍝")
 st.title("🍽️ Gestor de Comidas y Cenas")
 
 # --- Configuración API ---
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+# API_URL = os.getenv("API_URL", "http://localhost:8000")
+API_URL = "https://menu-api-4ev0.onrender.com"
 
 # --- Base local temporal ---
 if "db" not in st.session_state:
