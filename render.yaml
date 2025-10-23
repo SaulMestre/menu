@@ -21,8 +21,6 @@ services:
     startCommand: streamlit run front/app.py --server.port $PORT --server.address 0.0.0.0
     autoDeploy: true
     envVars:
-      - key: API_URL
-        fromService:
-          name: menu-api
-          type: web
-          property: url   # <- canvia connectionString per host
+  - key: API_URL
+    value: "https://menu-api-4ev0.onrender.com"
+
