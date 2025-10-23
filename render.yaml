@@ -1,5 +1,5 @@
 services:
-  # -------- API (FastAPI + Postgres a Neon) ----------
+  # --- API ---
   - type: web
     name: menu-api
     env: python
@@ -9,10 +9,10 @@ services:
     autoDeploy: true
     healthCheckPath: /ping
     envVars:
-      - key: ALLOWED_ORIGINS         # al principi pot ser "*"; després posa la URL del front
+      - key: ALLOWED_ORIGINS
         value: "*"
 
-  # -------- FRONT (Streamlit) ----------
+  # --- FRONT ---
   - type: web
     name: menu-front
     env: python
@@ -25,4 +25,4 @@ services:
         fromService:
           name: menu-api
           type: web
-          property: connectionString   # URL completa https://...
+          property: host   # <- canvia connectionString per host
