@@ -4,3 +4,4 @@ uvicorn
 pydantic
 requests
 streamlit
+psycopg[binary]
